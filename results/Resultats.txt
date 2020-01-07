@@ -1,0 +1,88 @@
+
+Résultats de janvier : 
+Moyenne: -8.97 °C
+Minimum: -23 °C
+Maximum: -3 °C
+Ecart-type: 4.49 °C
+
+
+Résultats de fevrier : 
+Moyenne: -4.93 °C
+Minimum: -12.0 °C
+Maximum: 5.0 °C
+Ecart-type: 4.56 °C
+
+
+Résultats de mars : 
+Moyenne: 1.19 °C
+Minimum: -8 °C
+Maximum: 7 °C
+Ecart-type: 3.51 °C
+
+
+Résultats de avril : 
+Moyenne: 8.0 °C
+Minimum: 2.0 °C
+Maximum: 16.0 °C
+Ecart-type: 3.15 °C
+
+
+Résultats de mai : 
+Moyenne: 12.9 °C
+Minimum: 5 °C
+Maximum: 18 °C
+Ecart-type: 4.04 °C
+
+
+Résultats de juin : 
+Moyenne: 17.03 °C
+Minimum: 11.0 °C
+Maximum: 22.0 °C
+Ecart-type: 3.01 °C
+
+
+Résultats de juillet : 
+Moyenne: 18.32 °C
+Minimum: 13 °C
+Maximum: 26 °C
+Ecart-type: 3.57 °C
+
+
+Résultats de aout : 
+Moyenne: 17.84 °C
+Minimum: 14 °C
+Maximum: 26 °C
+Ecart-type: 2.7 °C
+
+
+Résultats de septembre : 
+Moyenne: 10.5 °C
+Minimum: 6.0 °C
+Maximum: 16.0 °C
+Ecart-type: 2.33 °C
+
+
+Résultats de octobre : 
+Moyenne: 3.87 °C
+Minimum: 1 °C
+Maximum: 7 °C
+Ecart-type: 1.8 °C
+
+
+Résultats de novembre : 
+Moyenne: -0.33 °C
+Minimum: -8.0 °C
+Maximum: 5.0 °C
+Ecart-type: 3.72 °C
+
+
+Résultats de décembre : 
+Moyenne: -7.0 °C
+Minimum: -11 °C
+Maximum: -3 °C
+Ecart-type: 2.07 °C
+
+
+Statistiques sur l'année entière: 
+Minimum: -23.0 °C
+Maximum: 26.0 °C
