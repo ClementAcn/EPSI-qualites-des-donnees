@@ -54,7 +54,9 @@ def main():
     plt.close()
 
     # Températures annuelles
+    # data_all = pd.DataFrame(data.dropna().values.T.ravel().tolist())
     data_all = pd.DataFrame(data.values.T.ravel().tolist())
+    data_all = data_all.dropna()
     data_all.plot(kind='line')
     mplcursors.cursor(hover=True)
     plt.title('Températures annuelles')
