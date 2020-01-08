@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import itertools
 import mplcursors
+import chardet
 
 '''
 pour cet échantillon :														
@@ -19,46 +20,40 @@ pour cet échantillon :
 
 def main():
     # On charge le fichier csv
-    data = pd.read_csv('data/data_SI.csv', encoding='latin-1', sep=';')
-    
-    # Déclaration d'une liste pour stocker toutes les valeurs de l'année
-    array_annee = list()
+    data = pd.read_csv('data/data_SI.csv', sep=';', encoding="utf-8")
 
-    # On vide le fichier texte de ses résultats
+    # Partie sur les statistiques
     with open("results/Resultats.txt", "w") as text_file:
-        print('', file=text_file)
-    
-    for column in data:
-        val = data[column]
-        with open("results/Resultats.txt", "a") as text_file:
-            print(f"Résultats de {column} : ", file=text_file)
-            print(f"Moyenne: {str(round(val.mean(), 2))} °C", file=text_file)
-            print(f"Minimum: {str(round(val.min(), 2))} °C", file=text_file)
-            print(f"Maximum: {str(round(val.max(), 2))} °C", file=text_file)
-            print(f"Ecart-type: {str(round(val.std(), 2))} °C", file=text_file)
-            print('\n', file=text_file)
+        print("Moyennes : ", file=text_file)
+        print(f"{data.mean()} : ", file=text_file)
 
-        # Création des graphiques mensuels sous forme d'image
-        plt.plot(val)
-        plt.title('Températures en ' + column)
-        plt.ylabel('°C')
-        plt.savefig('results/' + column + '.png')
-        plt.close()
-        array_annee.append(val.dropna().values.tolist())
+        print('\nMinimums :', file=text_file)
+        print(f"{data.min()} : ", file=text_file)
 
-    # Ecriture du minimum et du maximum annuel dans le fichier
-    with open("results/Resultats.txt", "a") as text_file:
-        print('Statistiques sur l\'année entière: ', file=text_file)
-        print(f"Minimum: {str(round(data.dropna().values.min(), 2))} °C", file=text_file)
-        print(f"Maximum: {str(round(data.dropna().values.max(), 2))} °C", file=text_file)
+        print('\nMaximums :', file=text_file)
+        print(f"{data.max()} : ", file=text_file)
 
-    # Partie sur la création du graphique sur les températures annuelles
-    all = list(itertools.chain.from_iterable(array_annee))
-    plt.plot(all)
+        print('\nEcarts-type :', file=text_file)
+        print(f"{data.std()} : ", file=text_file)
+
+    # --- Graphiques --- #
+
+    # Températures mensuelles
+    data.plot(kind='line')
     mplcursors.cursor(hover=True)
-    plt.title('Températures en °C pour l\'année')
+    plt.title('Températures mensuelles')
     plt.ylabel('°C')
-    plt.savefig('results/Annuel.png')
+    plt.savefig('results/mensuelles.png')
+    plt.show()
+    plt.close()
+
+    # Températures annuelles
+    data_all = pd.DataFrame(data.values.T.ravel().tolist())
+    data_all.plot(kind='line')
+    mplcursors.cursor(hover=True)
+    plt.title('Températures annuelles')
+    plt.ylabel('°C')
+    plt.savefig('results/annuelles.png')
     plt.show()
     plt.close()
 

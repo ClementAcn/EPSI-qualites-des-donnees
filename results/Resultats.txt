@@ -1,88 +1,59 @@
+Moyennes : 
+janvier      -8.967742
+fevrier      -4.928571
+mars          1.193548
+avril         8.000000
+mai          12.903226
+juin         17.033333
+juillet      18.322581
+aout         17.838710
+septembre    10.500000
+octobre       3.870968
+novembre     -0.333333
+décembre     -7.000000
+dtype: float64 : 
 
-Résultats de janvier : 
-Moyenne: -8.97 °C
-Minimum: -23 °C
-Maximum: -3 °C
-Ecart-type: 4.49 °C
+Minimums :
+janvier     -23.0
+fevrier     -12.0
+mars         -8.0
+avril         2.0
+mai           5.0
+juin         11.0
+juillet      13.0
+aout         14.0
+septembre     6.0
+octobre       1.0
+novembre     -8.0
+décembre    -11.0
+dtype: float64 : 
 
+Maximums :
+janvier      -3.0
+fevrier       5.0
+mars          7.0
+avril        16.0
+mai          18.0
+juin         22.0
+juillet      26.0
+aout         26.0
+septembre    16.0
+octobre       7.0
+novembre      5.0
+décembre     -3.0
+dtype: float64 : 
 
-Résultats de fevrier : 
-Moyenne: -4.93 °C
-Minimum: -12.0 °C
-Maximum: 5.0 °C
-Ecart-type: 4.56 °C
-
-
-Résultats de mars : 
-Moyenne: 1.19 °C
-Minimum: -8 °C
-Maximum: 7 °C
-Ecart-type: 3.51 °C
-
-
-Résultats de avril : 
-Moyenne: 8.0 °C
-Minimum: 2.0 °C
-Maximum: 16.0 °C
-Ecart-type: 3.15 °C
-
-
-Résultats de mai : 
-Moyenne: 12.9 °C
-Minimum: 5 °C
-Maximum: 18 °C
-Ecart-type: 4.04 °C
-
-
-Résultats de juin : 
-Moyenne: 17.03 °C
-Minimum: 11.0 °C
-Maximum: 22.0 °C
-Ecart-type: 3.01 °C
-
-
-Résultats de juillet : 
-Moyenne: 18.32 °C
-Minimum: 13 °C
-Maximum: 26 °C
-Ecart-type: 3.57 °C
-
-
-Résultats de aout : 
-Moyenne: 17.84 °C
-Minimum: 14 °C
-Maximum: 26 °C
-Ecart-type: 2.7 °C
-
-
-Résultats de septembre : 
-Moyenne: 10.5 °C
-Minimum: 6.0 °C
-Maximum: 16.0 °C
-Ecart-type: 2.33 °C
-
-
-Résultats de octobre : 
-Moyenne: 3.87 °C
-Minimum: 1 °C
-Maximum: 7 °C
-Ecart-type: 1.8 °C
-
-
-Résultats de novembre : 
-Moyenne: -0.33 °C
-Minimum: -8.0 °C
-Maximum: 5.0 °C
-Ecart-type: 3.72 °C
-
-
-Résultats de décembre : 
-Moyenne: -7.0 °C
-Minimum: -11 °C
-Maximum: -3 °C
-Ecart-type: 2.07 °C
-
-
-Statistiques sur l'année entière: 
-Minimum: -23.0 °C
-Maximum: 26.0 °C
+Ecarts-type :
+janvier      4.490611
+fevrier      4.561746
+mars         3.506369
+avril        3.151354
+mai          4.036127
+juin         3.011281
+juillet      3.571994
+aout         2.696872
+septembre    2.330458
+octobre      1.802627
+novembre     3.717000
+décembre     2.065591
+dtype: float64 : 
