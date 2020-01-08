@@ -17,7 +17,8 @@ def main():
 	utiliser par exemple  Python Scipy pour les parties mathématiques					OK								
 	tracer les courbes de chaque mois avec une bibliothèque graphique python			OK										
 	assembler les courbes sur un seul graphique (J1 -> J365) 							OK						
-	présenter la valeur lue en parcourant la courbe à l'aide du pointeur, présenter les valeurs précédentes par mois et par année, par mois glissant de 30 jours centré sur la valeur lue													
+	présenter la valeur lue en parcourant la courbe à l'aide du pointeur                OK
+    présenter les valeurs précédentes par mois et par année, par mois glissant de 30 jours centré sur la valeur lue        
 														
 	à partir de données opendata, retrouver le type de climat													
 	reprendre les données typiques d'une localisation proche  fournies en complément , comparer les écarts. Qu'en concluez vous ?													
