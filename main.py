@@ -6,13 +6,17 @@ import mplcursors
 import chardet
 import numpy as np
 
-'''
-pour cet échantillon :														
+
+
+def main():
+    # Partie CSV avec données correcte
+    '''
+    pour cet échantillon :														
 	moyenne		    par mois							OK	
 	min /max		par mois et par année				OK							
-	écart type		par mois											
+	écart type		par mois							OK			
 	utiliser par exemple  Python Scipy pour les parties mathématiques					OK								
-	tracer les coubes de chaque mois avec une bibliothèque grapohique python			OK										
+	tracer les courbes de chaque mois avec une bibliothèque graphique python			OK										
 	assembler les courbes sur un seul graphique (J1 -> J365) 							OK						
 	présenter la valeur lue en parcourant la courbe à l'aide du pointeur                OK
     présenter les valeurs précédentes par mois et par année
@@ -20,9 +24,7 @@ pour cet échantillon :
 														
 	à partir de données opendata, retrouver le type de climat													
 	reprendre les données typiques d'une localisation proche  fournies en complément , comparer les écarts. Qu'en concluez vous ?													
-'''
-
-def main():
+    '''
     # On charge le fichier csv
     data = pd.read_csv('data/data_SI.csv', sep=';', encoding="utf-8")
 
