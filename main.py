@@ -5,21 +5,23 @@ import mplcursors
 import chardet
 import numpy as np
 
-'''
-pour cet échantillon :														
+
+
+def main():
+    # Partie CSV avec données correcte
+    '''
+    pour cet échantillon :														
 	moyenne		    par mois							OK	
 	min /max		par mois et par année				OK							
-	écart type		par mois											
+	écart type		par mois							OK			
 	utiliser par exemple  Python Scipy pour les parties mathématiques					OK								
-	tracer les coubes de chaque mois avec une bibliothèque grapohique python			OK										
+	tracer les courbes de chaque mois avec une bibliothèque graphique python			OK										
 	assembler les courbes sur un seul graphique (J1 -> J365) 							OK						
 	présenter la valeur lue en parcourant la courbe à l'aide du pointeur, présenter les valeurs précédentes par mois et par année, par mois glissant de 30 jours centré sur la valeur lue													
 														
 	à partir de données opendata, retrouver le type de climat													
 	reprendre les données typiques d'une localisation proche  fournies en complément , comparer les écarts. Qu'en concluez vous ?													
-'''
-
-def main():
+    '''
     # On charge le fichier csv
     data = pd.read_csv('data/data_SI.csv', sep=';', encoding="utf-8")
 
@@ -58,4 +60,36 @@ def main():
     plt.show()
     plt.close()
 
+    # Partie CSV avec données incorrecte
+    '''
+    pour cet échantillon :					
+    moyenne		    par mois		
+    min /max		par mois et par année		
+	écart type		par mois		
+	utiliser par exemple  Python Scipy pour les parties mathématiques				
+	tracer les coubes de chaque mois avec une bibliothèque grapohique python				
+	assembler les courbes sur un seul graphique (J1 -> J365) 				
+	présenter la valeur lue en parcourant la courbe à l'aide du pointeur, présenter les valeurs précédentes par mois et par année, par mois glissant de 30 jours centré sur la valeur lue				
+
+	identifier les valeurs atypiques ou manquantes				
+	définir une méthode pour identifier une valeur atypique				
+	définir une loi pour valider la pertinence ou non d'une valeur atypique				
+	implémenter ces lois dans votre application précédente				
+    '''
+    # On charge le fichier csv
+    data_erreur = pd.read_csv('data/data_SI_erreur.csv', sep=';', encoding="utf-8")
+
+    # Partie sur les statistiques
+    with open("results/Resultats_erreur.txt", "w") as text_file:
+        print("Moyennes : ", file=text_file)
+        print(f"{np.round(data.mean(), 2)} : ", file=text_file)
+
+        print('\nMinimums :', file=text_file)
+        print(f"{data.min()} : ", file=text_file)
+
+        print('\nMaximums :', file=text_file)
+        print(f"{data.max()} : ", file=text_file)
+
+        print('\nEcarts-type :', file=text_file)
+        print(f"{np.round(data.std(), 2)} : ", file=text_file)
 main()
