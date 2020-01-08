@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import itertools
 import mplcursors
 import chardet
+import numpy as np
 
 '''
 pour cet échantillon :														
@@ -26,7 +27,7 @@ def main():
     # Partie sur les statistiques
     with open("results/Resultats.txt", "w") as text_file:
         print("Moyennes : ", file=text_file)
-        print(f"{data.mean()} : ", file=text_file)
+        print(f"{np.round(data.mean(), 2)} : ", file=text_file)
 
         print('\nMinimums :', file=text_file)
         print(f"{data.min()} : ", file=text_file)
@@ -35,7 +36,7 @@ def main():
         print(f"{data.max()} : ", file=text_file)
 
         print('\nEcarts-type :', file=text_file)
-        print(f"{data.std()} : ", file=text_file)
+        print(f"{np.round(data.std(), 2)} : ", file=text_file)
 
     # --- Graphiques --- #
 
