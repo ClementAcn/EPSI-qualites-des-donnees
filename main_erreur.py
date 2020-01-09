@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.widgets import Slider
 import itertools
 import mplcursors
 import chardet
@@ -70,4 +71,39 @@ def main():
         print('\nEcarts-type :', file=text_file)
         print(f"{np.round(data_erreur.std(), 2)} : ", file=text_file)
     
+    # --- Graphiques --- #
+
+    # Températures mensuelles
+    data_erreur.plot(kind='line')
+    mplcursors.cursor(hover=True)
+    plt.title('Températures mensuelles')
+    plt.ylabel('°C')
+    plt.savefig('results/erreur_mensuelles.png')
+    plt.show()
+    plt.close()
+
+    # Températures annuelles
+    data_erreur_all = pd.DataFrame(data_erreur.values.T.ravel().tolist())
+    data_erreur_all = data_erreur_all.dropna()
+    data_erreur_all.plot(kind='line')
+    mplcursors.cursor(hover=True)
+    plt.title('Températures annuelles')
+    plt.ylabel('°C')
+    plt.savefig('results/erreur_annuelles.png')
+    axamp = plt.axes([0.2, 0.025, 0.65, 0.03], polar=False)
+    samp = Slider(axamp, 'Jours', 1, 365, valinit=20)
+    al = plt.gcf().get_axes()
+    plt.sca(al[0]) # Pour remettre l'axe du graphique par défaut et non celui du curseur
+    def update(val):
+        xvalue = samp.val
+        if xvalue < 15:
+            xvalue = 15
+        elif xvalue > 350:
+            xvalue = 350
+        plt.xlim(xvalue-15, xvalue+15)
+
+    samp.on_changed(update)
+    plt.show()
+    plt.close()
+
 main()
