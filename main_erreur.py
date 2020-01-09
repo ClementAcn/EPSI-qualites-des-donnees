@@ -23,50 +23,47 @@ def main():
 	implémenter ces lois dans votre application précédente				
     '''
     # On charge le fichier csv
-    # dtype={'Mars': np.int64, 'Juin': np.int64, 'Juillet': np.int64, 'Octobre': np.int64}
     data_erreur = pd.read_csv('data/data_SI_erreur.csv', sep=';', encoding="utf-8")
     print(data_erreur)
-    # data_erreur = data_erreur.apply(pd.to_numeric, errors='coerce')
-    print('------------------------------')
+    print('-------------|-----------------')
+    # Suppression des valeurs non float par NaN
     for column in data_erreur:
-        val_column = data_erreur[column]
-        print(val_column)
-        for value in val_column:
-            print(value)
-            if not value.isnumeric:
-                value = val_column.mean()
-        print(val_column)
-        '''
-        if not val_column.value.isnumeric:
-            print(val_column)
-            val_column = val_column.mean()
-        '''
-    print(data_erreur)
-    # data_erreur = data_erreur.apply(lambda x: x.fillna(x.mean()))
-    # print(data_erreur)
-    
-    '''
-    for data in data_erreur:
-        for value in data_erreur[data]:
-            if not isinstance(value, int) or not isinstance(value, float):
-                print(value)
-                print(type(value))
-                value = value.replace(value, 999)
+        cpt = 0
+        for row in data_erreur[column]:
+            try:
+                float(row)
+            except ValueError:
+                data_erreur.loc[cpt, column]=np.NaN
+            cpt+=1
+    data_erreur = data_erreur.astype(float)
+    # Suppression des valeurs qui sortent du lot (cas extrème)
+    '''or data_erreur[column] < (data_erreur[column].mean()*-3)'''
+    for column in data_erreur:
+        tab_column = data_erreur[column]
+        mediane = tab_column.median()
+        ecart_type = tab_column.std()
+        print('Médiane de ' + column + ' : ' + str(mediane))
+        print('Ecart type de ' + column + ' : ' + str(ecart_type))
+        if mediane < 0:
+            tab_column = np.where(tab_column > (mediane + ecart_type), tab_column, np.nan)
+            tab_column = np.where(tab_column < (mediane - ecart_type), tab_column, np.nan)
+            tab_column = np.where(tab_column > -20, tab_column, np.nan)
+        if mediane > 0:
+            tab_column = np.where(tab_column < (mediane + ecart_type), tab_column, np.nan)
+            tab_column = np.where(tab_column > (mediane - ecart_type), tab_column, np.nan)
+            tab_column = np.where(tab_column < 40, tab_column, np.nan)
 
-    if isinstance(data_erreur, np.float64):
-        data_erreur = data_erreur.astype('int64').dtypes
-    if not isinstance(data_erreur, np.int64):
-        data_erreur = data_erreur.replace(data_erreur, 999)
-    '''
-    '''
-    for dataset in data_erreur_numeric:
-        mars_avg = dataset['mars'].mean()
-        mars_std = dataset['mars'].std()
-        mars_null_count = dataset['mars'].isnull().sum()
-        mars_null_random_list = np.random.randint(mars_avg - mars_std, mars_avg + mars_std, size=mars_null_count)    
-        dataset.loc[np.isnan(dataset['mars']),'mars'] = mars_null_random_list
-    '''
-    
+    print(data_erreur)
+    print('-------------|-----------------')
+    # On remplace les NaN
+    data_erreur.interpolate(axis=0, inplace=True)
+    # Suppression des valeurs de chaque mois inexistante
+    months_length = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    for month_cpt, column  in enumerate(data_erreur):
+        for day_cpt, row in enumerate(data_erreur[column]):
+            if day_cpt+1 > months_length[month_cpt]:
+                data_erreur.loc[day_cpt, column]=np.NaN
+    print(data_erreur)
     # Partie sur les statistiques
     with open("results/Resultats_erreur.txt", "w") as text_file:
         print("Moyennes : ", file=text_file)

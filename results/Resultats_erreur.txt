@@ -1,14 +1,14 @@
 Moyennes : 
 janvier      -8.97
 février      -4.93
-mars          1.13
+mars          1.24
 avril         8.00
 mai          12.90
-juin         17.10
-juillet      17.57
+juin         17.00
+juillet      17.69
 août         18.84
 septembre    10.50
-octobre       3.83
+octobre       3.82
 novembre     -0.33
 décembre     -7.97
 dtype: float64 : 
@@ -45,15 +45,15 @@ dtype: float64 :
 
 Ecarts-type :
 janvier      4.49
-février      4.33
-mars         3.49
-avril        3.10
+février      4.56
+mars         3.54
+avril        3.15
 mai          4.04
-juin         2.94
-juillet      5.57
+juin         3.04
+juillet      5.62
 août         6.04
-septembre    2.29
+septembre    2.33
 octobre      1.79
-novembre     3.65
+novembre     3.72
 décembre     5.03
 dtype: float64 : 
