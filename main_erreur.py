@@ -9,18 +9,18 @@ def main():
     # Partie CSV avec données incorrecte
     '''
     pour cet échantillon :					
-    moyenne		    par mois		
-    min /max		par mois et par année		
-	écart type		par mois		
+    moyenne		    par mois		        OK
+    min /max		par mois et par année   OK
+	écart type		par mois		        OK  
 	utiliser par exemple  Python Scipy pour les parties mathématiques				
 	tracer les coubes de chaque mois avec une bibliothèque grapohique python				
 	assembler les courbes sur un seul graphique (J1 -> J365) 				
 	présenter la valeur lue en parcourant la courbe à l'aide du pointeur, présenter les valeurs précédentes par mois et par année, par mois glissant de 30 jours centré sur la valeur lue				
 
-	identifier les valeurs atypiques ou manquantes				
-	définir une méthode pour identifier une valeur atypique				
-	définir une loi pour valider la pertinence ou non d'une valeur atypique				
-	implémenter ces lois dans votre application précédente				
+	identifier les valeurs atypiques ou manquantes	                            OK			
+	définir une méthode pour identifier une valeur atypique				        OK
+	définir une loi pour valider la pertinence ou non d'une valeur atypique	    OK			
+	implémenter ces lois dans votre application précédente				        
     '''
     # On charge le fichier csv
     data_erreur = pd.read_csv('data/data_SI_erreur.csv', sep=';', encoding="utf-8")
