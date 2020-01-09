@@ -25,8 +25,7 @@ def main():
     '''
     # On charge le fichier csv
     data_erreur = pd.read_csv('data/data_SI_erreur.csv', sep=';', encoding="utf-8")
-    print(data_erreur)
-    print('-------------|-----------------')
+
     # Suppression des valeurs non float par NaN
     for column in data_erreur:
         cpt = 0
@@ -37,6 +36,7 @@ def main():
                 data_erreur.loc[cpt, column]=np.NaN
             cpt+=1
     data_erreur = data_erreur.astype(float)
+
     # Suppression des valeurs qui sortent du lot (cas extrème)
     for column in data_erreur:
         moyenne = data_erreur[column].mean()
@@ -46,17 +46,16 @@ def main():
         data_erreur[column] = np.where(data_erreur[column] < (moyenne + 3 * ecart_type), data_erreur[column], np.nan)
         data_erreur[column] = np.where(data_erreur[column] > (moyenne - 3 * ecart_type), data_erreur[column], np.nan)
 
-    print(data_erreur)
-    print('-------------|-----------------')
     # On remplace les NaN
     data_erreur.interpolate(axis=0, inplace=True)
+
     # Suppression des valeurs de chaque mois inexistante
     months_length = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     for month_cpt, column  in enumerate(data_erreur):
         for day_cpt, row in enumerate(data_erreur[column]):
             if day_cpt+1 > months_length[month_cpt]:
-                data_erreur.loc[day_cpt, column]=np.NaN
-    print(data_erreur)
+                data_erreur.loc[day_cpt, column]=np.nan
+
     # Partie sur les statistiques
     with open("results/Resultats_erreur.txt", "w") as text_file:
         print("Moyennes : ", file=text_file)
