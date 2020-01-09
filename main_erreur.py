@@ -41,8 +41,6 @@ def main():
     for column in data_erreur:
         moyenne = data_erreur[column].mean()
         ecart_type = np.round(data_erreur[column].std(), 2)
-        print('Médiane + Ecarte type de ' + column + ' : ' + str(moyenne + ecart_type))
-        print('Médiane - Ecarte type de ' + column + ' : ' + str(moyenne - ecart_type))
         data_erreur[column] = np.where(data_erreur[column] < (moyenne + 3 * ecart_type), data_erreur[column], np.nan)
         data_erreur[column] = np.where(data_erreur[column] > (moyenne - 3 * ecart_type), data_erreur[column], np.nan)
 
