@@ -37,21 +37,13 @@ def main():
             cpt+=1
     data_erreur = data_erreur.astype(float)
     # Suppression des valeurs qui sortent du lot (cas extrème)
-    '''or data_erreur[column] < (data_erreur[column].mean()*-3)'''
     for column in data_erreur:
-        tab_column = data_erreur[column]
-        mediane = tab_column.median()
-        ecart_type = tab_column.std()
-        print('Médiane de ' + column + ' : ' + str(mediane))
-        print('Ecart type de ' + column + ' : ' + str(ecart_type))
-        if mediane < 0:
-            tab_column = np.where(tab_column > (mediane + ecart_type), tab_column, np.nan)
-            tab_column = np.where(tab_column < (mediane - ecart_type), tab_column, np.nan)
-            tab_column = np.where(tab_column > -20, tab_column, np.nan)
-        if mediane > 0:
-            tab_column = np.where(tab_column < (mediane + ecart_type), tab_column, np.nan)
-            tab_column = np.where(tab_column > (mediane - ecart_type), tab_column, np.nan)
-            tab_column = np.where(tab_column < 40, tab_column, np.nan)
+        moyenne = data_erreur[column].mean()
+        ecart_type = np.round(data_erreur[column].std(), 2)
+        print('Médiane + Ecarte type de ' + column + ' : ' + str(moyenne + ecart_type))
+        print('Médiane - Ecarte type de ' + column + ' : ' + str(moyenne - ecart_type))
+        data_erreur[column] = np.where(data_erreur[column] < (moyenne + 3 * ecart_type), data_erreur[column], np.nan)
+        data_erreur[column] = np.where(data_erreur[column] > (moyenne - 3 * ecart_type), data_erreur[column], np.nan)
 
     print(data_erreur)
     print('-------------|-----------------')

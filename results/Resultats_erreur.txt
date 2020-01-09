@@ -1,31 +1,31 @@
 Moyennes : 
-janvier      -8.97
+janvier      -8.66
 février      -4.93
 mars          1.24
 avril         8.00
 mai          12.90
 juin         17.00
-juillet      17.69
-août         18.84
+juillet      18.35
+août         17.82
 septembre    10.50
 octobre       3.82
 novembre     -0.33
-décembre     -7.97
+décembre     -7.13
 dtype: float64 : 
 
 Minimums :
-janvier     -23.0
+janvier     -19.0
 février     -12.0
 mars         -8.0
 avril         2.0
 mai           5.0
 juin         11.0
-juillet      -6.0
+juillet      13.0
 août         14.0
 septembre     6.0
 octobre       1.0
 novembre     -8.0
-décembre    -33.0
+décembre    -11.0
 dtype: float64 : 
 
 Maximums :
@@ -36,7 +36,7 @@ avril        16.0
 mai          18.0
 juin         22.0
 juillet      26.0
-août         48.0
+août         26.0
 septembre    16.0
 octobre       7.0
 novembre      5.0
@@ -44,16 +44,16 @@ décembre     -3.0
 dtype: float64 : 
 
 Ecarts-type :
-janvier      4.49
+janvier      3.77
 février      4.56
 mars         3.54
 avril        3.15
 mai          4.04
 juin         3.04
-juillet      5.62
-août         6.04
+juillet      3.57
+août         2.70
 septembre    2.33
 octobre      1.79
 novembre     3.72
-décembre     5.03
+décembre     1.93
 dtype: float64 : 
