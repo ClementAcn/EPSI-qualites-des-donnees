@@ -20,7 +20,7 @@ def main():
 	assembler les courbes sur un seul graphique (J1 -> J365) 							OK						
 	présenter la valeur lue en parcourant la courbe à l'aide du pointeur                OK
     présenter les valeurs précédentes par mois et par année
-    par mois glissant de 30 jours centré sur la valeur lue       
+    par mois glissant de 30 jours centré sur la valeur lue                              OK      
 														
 	à partir de données opendata, retrouver le type de climat													
 	reprendre les données typiques d'une localisation proche  fournies en complément , comparer les écarts. Qu'en concluez vous ?													
@@ -54,7 +54,6 @@ def main():
     plt.close()
 
     # Températures annuelles
-    # data_all = pd.DataFrame(data.dropna().values.T.ravel().tolist())
     data_all = pd.DataFrame(data.values.T.ravel().tolist())
     data_all = data_all.dropna()
     data_all.plot(kind='line')
@@ -77,7 +76,6 @@ def main():
     samp.on_changed(update)
     plt.show()
     plt.close()
-
 
 
 main()
