@@ -5,7 +5,7 @@ import itertools
 import mplcursors
 import chardet
 import numpy as np
-
+import json
 
 
 def main():
@@ -23,13 +23,32 @@ def main():
     par mois glissant de 30 jours centré sur la valeur lue                              OK      
 														
 	à partir de données opendata, retrouver le type de climat													
-	reprendre les données typiques d'une localisation proche  fournies en complément , comparer les écarts. Qu'en concluez vous ?													
+	reprendre les données typiques d'une localisation proche  fournies en complément , comparer les écarts. Qu'en concluez vous ?
+    corelation convolution regression interpolation										
     '''
     # On charge le fichier csv
     data = pd.read_csv('data/data_SI.csv', sep=';', encoding="utf-8")
 
+    print('Choisissez quel visualisation voulez-vous ? (1 - Mensuelle / 2 - Annuelle / 3 - Comparatif)')
+    try:
+        value=int(input("Saisissez 1, 2 ou 3:\n"))
+    except ValueError:
+        print("This is not a whole number.")
+        return
+
+    if value < 1 or value > 3:
+        return
+
+    if value == 1:
+        mensuel(data)
+    elif value == 2:
+        annuel(data)
+    elif value == 3:
+        compare()
+
+def mensuel(data):
     # Partie sur les statistiques
-    with open("results/Resultats.txt", "w") as text_file:
+    with open("results/res_mens.txt", "w") as text_file:
         print("Moyennes : ", file=text_file)
         print(f"{np.round(data.mean(), 2)} : ", file=text_file)
 
@@ -53,6 +72,7 @@ def main():
     plt.show()
     plt.close()
 
+def annuel(data):
     # Températures annuelles
     data_all = pd.DataFrame(data.values.T.ravel().tolist())
     data_all = data_all.dropna()
@@ -76,6 +96,28 @@ def main():
     samp.on_changed(update)
     plt.show()
     plt.close()
-
+    
+def compare():
+    compare = pd.read_csv('data/compare.csv', sep=';', encoding="utf-8")
+    # with open('data/moscow_2017.json', 'r') as file:
+    #     data_json=file.read()
+    # data_moscow = json.loads(data_json)
+    # temps = []
+    # for k in data_moscow["data"]:
+    #     temps.append(k['temperature'])
+    # print(temps)
+    # print(len(temps))
+    compare['station_finlande'] = compare['station_finlande'].str.replace(',','.')
+    compare['station_finlande'] = compare['station_finlande'].astype(float)
+    print("Moyennes : \n{}".format(compare.mean()))
+    print("Minimums : \n{}".format(compare.min()))
+    print("Maximums : \n{}".format(compare.max()))
+    print("Ecarts-type : \n{}".format(compare.std()))
+    print("Corrélation : \n{}".format(compare.corr()))
+    # print("Convolution : \n{}".format(np.convolve(compare['ville_mystere'], compare['station_finlande'])))
 
 main()
+
+# API key : atNedUkf
+# Get station id : https://api.meteostat.net/v1/stations/search?q=moscow&key=atNedUkf
+# Get weather data : https://api.meteostat.net/v1/history/daily?station=UUWW0&start=2017-12-31&end=2018-12-31&key=atNedUkf

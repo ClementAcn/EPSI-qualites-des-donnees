@@ -1,0 +1,12 @@
+Moyennes : 
+Temperatures    5.76
+dtype: float64
+1.4
+Mediane : 
+Temperatures    6.0
+dtype: float64
+1.1
+Ecart type : 
+Temperatures    10.0
+dtype: float64
+11.35
